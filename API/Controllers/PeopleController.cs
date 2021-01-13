@@ -44,6 +44,13 @@ namespace API.Controllers
              },
         };
 
+        [Route("api/people/firstnames")]
+        [HttpGet]
+        public List<string> FirstNames()
+        {
+            return _people.Select(p => p.FirstName).ToList();
+        }
+
         // GET: api/People
         public IEnumerable<Person> Get()
         {
