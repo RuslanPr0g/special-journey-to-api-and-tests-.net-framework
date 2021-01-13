@@ -51,6 +51,13 @@ namespace API.Controllers
             return _people.Select(p => p.FirstName).ToList();
         }
 
+        [Route("api/people/firstnames/{id}")]
+        [HttpGet]
+        public string FirstNames(int id)
+        {
+            return _people.Where(p => p.ID == id).FirstOrDefault().FirstName;
+        }
+
         // GET: api/People
         public IEnumerable<Person> Get()
         {
