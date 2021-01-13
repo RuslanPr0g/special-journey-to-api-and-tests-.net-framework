@@ -83,3 +83,4 @@ C:\Users\theru\Desktop\SimpleAPI_WithTests\API\obj\Debug\API.csproj.CoreCompileI
 C:\Users\theru\Desktop\SimpleAPI_WithTests\API\obj\Debug\API.csproj.CopyComplete
 C:\Users\theru\Desktop\SimpleAPI_WithTests\API\obj\Debug\API.dll
 C:\Users\theru\Desktop\SimpleAPI_WithTests\API\obj\Debug\API.pdb
+C:\Users\theru\Desktop\SimpleAPI_WithTests\API\bin\Documentation.xml
