@@ -73,26 +73,6 @@ namespace API.Tests.Controllers
         [InlineData(2)]
         [InlineData(3)]
         [InlineData(4)]
-        public void Get_ShouldThrowAnException(int checkAt)
-        {
-            // Arrange
-            PeopleController controller = new PeopleController(people);
-
-            // Act
-            List<Person> result = controller.Get();
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(people.Count(), result.Count());
-            Assert.Equal(people.ElementAt(checkAt), result.ElementAt(checkAt));
-        }
-
-        [Theory]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(3)]
-        [InlineData(4)]
         public void GetById_ShouldReturnPerson(int index)
         {
             // Arrange
