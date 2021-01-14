@@ -1,20 +1,18 @@
-﻿using API;
+﻿using System;
+using API;
 using API.Controllers;
 using API.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using Xunit;
 
 namespace API.Tests.Controllers
 {
-    [TestClass]
     public class PeopleControllerTest
     {
-        [TestMethod]
         public void Get_ShouldReturnPeople()
         {
             // Arrange
@@ -24,13 +22,12 @@ namespace API.Tests.Controllers
             List<Person> result = controller.Get();
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count());
+            Assert.Equal(new Person(), result.ElementAt(0));
+            Assert.Equal(new Person(), result.ElementAt(1));
         }
 
-        [TestMethod]
         public void GetById_ShouldReturnPerson()
         {
             // Arrange
@@ -40,10 +37,9 @@ namespace API.Tests.Controllers
             Person result = controller.Get(5);
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.Equal(new Person(), result);
         }
 
-        [TestMethod]
         public void Post_ShouldReturnPeopleWithNewPerson()
         {
             // Arrange
@@ -53,11 +49,10 @@ namespace API.Tests.Controllers
             List<Person> result = controller.Post(new Person { ID = 4, FirstName="Ruslan", LastName="Sok" });
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.Equal(new List<Person>(), result);
         }
 
 
-        [TestMethod]
         public void Delete_ShouldReturnPeopleWithoutDeletedPerson()
         {
             // Arrange
@@ -67,7 +62,7 @@ namespace API.Tests.Controllers
             List<Person> result = controller.Delete(5);
 
             // Assert
-            Assert.AreEqual("value", result);
+            Assert.Equal(new List<Person>(), result);
         }
     }
 }
