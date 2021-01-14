@@ -481,9 +481,25 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:API.Controllers.HomeController">
+            <summary>
+            Home
+            </summary>
+        </member>
+        <member name="M:API.Controllers.HomeController.Index">
+            <summary>
+            Index page
+            </summary>
+            <returns>Index view</returns>
+        </member>
         <member name="T:API.Controllers.PeopleController">
             <summary>
             Information about people.
+            </summary>
+        </member>
+        <member name="F:API.Controllers.PeopleController._people">
+            <summary>
+            hard coded list of people
             </summary>
         </member>
         <member name="M:API.Controllers.PeopleController.FirstNames">

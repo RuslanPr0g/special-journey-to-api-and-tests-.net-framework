@@ -13,11 +13,45 @@ namespace API.Tests.Controllers
 {
     public class PeopleControllerTest
     {
+        private List<Person> people = new List<Person>
+        {
+             new Person
+             {
+                 ID = 0,
+                 FirstName = "John",
+                 LastName = "Smith"
+             },
+             new Person
+             {
+                 ID = 1,
+                 FirstName = "Dmitriy",
+                 LastName = "Amerados"
+             },
+             new Person
+             {
+                 ID = 2,
+                 FirstName = "William",
+                 LastName = "Shakespear"
+             },
+             new Person
+             {
+                 ID = 3,
+                 FirstName = "John",
+                 LastName = "Williamed"
+             },
+             new Person
+             {
+                 ID = 4,
+                 FirstName = "Will",
+                 LastName = "Smith"
+             },
+        };
+
         [Fact]
         public void Get_ShouldReturnPeople()
         {
             // Arrange
-            PeopleController controller = new PeopleController();
+            PeopleController controller = new PeopleController(people);
 
             // Act
             List<Person> result = controller.Get();
@@ -33,7 +67,7 @@ namespace API.Tests.Controllers
         public void GetById_ShouldReturnPerson()
         {
             // Arrange
-            PeopleController controller = new PeopleController();
+            PeopleController controller = new PeopleController(people);
 
             // Act
             Person result = controller.Get(5);
@@ -46,7 +80,7 @@ namespace API.Tests.Controllers
         public void Post_ShouldReturnPeopleWithNewPerson()
         {
             // Arrange
-            PeopleController controller = new PeopleController();
+            PeopleController controller = new PeopleController(people);
 
             // Act
             List<Person> result = controller.Post(new Person { ID = 4, FirstName="Ruslan", LastName="Sok" });
@@ -60,7 +94,7 @@ namespace API.Tests.Controllers
         public void Delete_ShouldReturnPeopleWithoutDeletedPerson()
         {
             // Arrange
-            PeopleController controller = new PeopleController();
+            PeopleController controller = new PeopleController(people);
 
             // Act
             List<Person> result = controller.Delete(5);

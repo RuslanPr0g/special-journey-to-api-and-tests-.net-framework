@@ -13,7 +13,14 @@ namespace API.Controllers
     /// </summary>
     public class PeopleController : ApiController
     {
-        private readonly List<Person> _people = new List<Person>
+        private readonly List<Person> _people;
+
+        /// <summary>
+        /// empty contrictor
+        /// </summary>
+        public PeopleController()
+        {
+            _people = new List<Person>
         {
              new Person
              {
@@ -33,19 +40,17 @@ namespace API.Controllers
                  FirstName = "William",
                  LastName = "Shakespear"
              },
-             new Person
-             {
-                 ID = 3,
-                 FirstName = "John",
-                 LastName = "Williamed"
-             },
-             new Person
-             {
-                 ID = 4,
-                 FirstName = "Will",
-                 LastName = "Smith"
-             },
-        };
+        }; ;
+        }
+
+        /// <summary>
+        /// constructor to initialize people
+        /// </summary>
+        /// <param name="people"></param>
+        public PeopleController(List<Person> people)
+        {
+            _people = people;
+        }
 
         /// <summary>
         /// Get all first names of people
