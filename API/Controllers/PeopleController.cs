@@ -40,6 +40,7 @@ namespace API.Controllers
                  FirstName = "William",
                  LastName = "Shakespear"
              },
+
         }; ;
         }
 
@@ -60,7 +61,14 @@ namespace API.Controllers
         [HttpGet]
         public List<string> FirstNames()
         {
-            return _people.Select(p => p.FirstName).ToList();
+            if (_people is null)
+            {
+                return new List<string>();
+            }
+            else
+            {
+                return _people.Select(p => p.FirstName).ToList();
+            }
         }
 
         /// <summary>
@@ -72,7 +80,14 @@ namespace API.Controllers
         [HttpGet]
         public string FirstNames(int id)
         {
-            return _people.Where(p => p.ID == id).FirstOrDefault().FirstName;
+            if (_people is null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return _people.Where(p => p.ID == id).FirstOrDefault().FirstName;
+            }
         }
 
         /// <summary>
@@ -93,7 +108,14 @@ namespace API.Controllers
         // GET: api/People/5
         public Person Get(int id)
         {
-            return _people.Where(p => p.ID == id).FirstOrDefault();
+            if (_people is null)
+            {
+                return new Person();
+            }
+            else
+            {
+                return _people.Where(p => p.ID == id).FirstOrDefault();
+            }
         }
 
         /// <summary>
@@ -103,9 +125,16 @@ namespace API.Controllers
         // POST: api/People
         public List<Person> Post(Person person)
         {
-            _people.Add(person);
+            if (_people is null)
+            {
+                return new List<Person>();
+            }
+            else
+            {
+                _people.Add(person);
 
-            return _people;
+                return _people;
+            }
         }
 
         /// <summary>
@@ -115,9 +144,16 @@ namespace API.Controllers
         // DELETE: api/People/5
         public List<Person> Delete(int id)
         {
-            _people.RemoveAt(id);
+            if (_people is null)
+            {
+                return new List<Person>();
+            }
+            else
+            {
+                _people.RemoveAt(id);
 
-            return _people;
+                return _people;
+            }
         }
     }
 }
