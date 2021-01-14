@@ -13,6 +13,7 @@ namespace API.Tests.Controllers
 {
     public class PeopleControllerTest
     {
+        [Fact]
         public void Get_ShouldReturnPeople()
         {
             // Arrange
@@ -28,6 +29,7 @@ namespace API.Tests.Controllers
             Assert.Equal(new Person(), result.ElementAt(1));
         }
 
+        [Fact]
         public void GetById_ShouldReturnPerson()
         {
             // Arrange
@@ -40,6 +42,7 @@ namespace API.Tests.Controllers
             Assert.Equal(new Person(), result);
         }
 
+        [Fact]
         public void Post_ShouldReturnPeopleWithNewPerson()
         {
             // Arrange
@@ -53,6 +56,7 @@ namespace API.Tests.Controllers
         }
 
 
+        [Fact]
         public void Delete_ShouldReturnPeopleWithoutDeletedPerson()
         {
             // Arrange
