@@ -1,5 +1,6 @@
 ﻿using API;
 using API.Controllers;
+using API.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,16 @@ using System.Web.Http;
 namespace API.Tests.Controllers
 {
     [TestClass]
-    public class ValuesControllerTest
+    public class PeopleControllerTest
     {
         [TestMethod]
         public void Get()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            PeopleController controller = new PeopleController();
 
             // Act
-            IEnumerable<string> result = controller.Get();
+            List<Person> result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
@@ -33,10 +34,10 @@ namespace API.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            PeopleController controller = new PeopleController();
 
             // Act
-            string result = controller.Get(5);
+            Person result = controller.Get(5);
 
             // Assert
             Assert.AreEqual("value", result);
@@ -46,36 +47,27 @@ namespace API.Tests.Controllers
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            PeopleController controller = new PeopleController();
 
             // Act
-            controller.Post("value");
+            List<Person> result = controller.Post(new Person { ID = 4, FirstName="Ruslan", LastName="Sok" });
 
             // Assert
+            Assert.AreEqual("value", result);
         }
 
-        [TestMethod]
-        public void Put()
-        {
-            // Arrange
-            ValuesController controller = new ValuesController();
-
-            // Act
-            controller.Put(5, "value");
-
-            // Assert
-        }
 
         [TestMethod]
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            PeopleController controller = new PeopleController();
 
             // Act
-            controller.Delete(5);
+            List<Person> result = controller.Delete(5);
 
             // Assert
+            Assert.AreEqual("value", result);
         }
     }
 }

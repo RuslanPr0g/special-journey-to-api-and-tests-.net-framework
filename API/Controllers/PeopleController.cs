@@ -75,7 +75,7 @@ namespace API.Controllers
         /// </summary>
         /// <returns>list of people</returns>
         // GET: api/People
-        public IEnumerable<Person> Get()
+        public List<Person> Get()
         {
             return _people;
         }
@@ -96,9 +96,11 @@ namespace API.Controllers
         /// </summary>
         /// <param name="person">person to add</param>
         // POST: api/People
-        public void Post(Person person)
+        public List<Person> Post(Person person)
         {
             _people.Add(person);
+
+            return _people;
         }
 
         /// <summary>
@@ -106,9 +108,11 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id">id of person</param>
         // DELETE: api/People/5
-        public void Delete(int id)
+        public List<Person> Delete(int id)
         {
             _people.RemoveAt(id);
+
+            return _people;
         }
     }
 }
