@@ -58,9 +58,29 @@ namespace API.Tests.Controllers
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(2, result.Count());
-            Assert.Equal(new Person(), result.ElementAt(0));
-            Assert.Equal(new Person(), result.ElementAt(1));
+            Assert.Equal(people.Count(), result.Count());
+            Assert.Equal(people.ElementAt(0), result.ElementAt(0));
+            Assert.Equal(people.ElementAt(1), result.ElementAt(1));
+            Assert.Equal(people.ElementAt(2), result.ElementAt(2));
+            Assert.Equal(people.ElementAt(3), result.ElementAt(3));
+        }
+
+        [Fact]
+        public void Get_ShouldT()
+        {
+            // Arrange
+            PeopleController controller = new PeopleController(people);
+
+            // Act
+            List<Person> result = controller.Get();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(people.Count(), result.Count());
+            Assert.Equal(people.ElementAt(0), result.ElementAt(0));
+            Assert.Equal(people.ElementAt(1), result.ElementAt(1));
+            Assert.Equal(people.ElementAt(2), result.ElementAt(2));
+            Assert.Equal(people.ElementAt(3), result.ElementAt(3));
         }
 
         [Fact]
@@ -68,12 +88,13 @@ namespace API.Tests.Controllers
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
+            int index = 2;
 
             // Act
-            Person result = controller.Get(5);
+            Person result = controller.Get(index);
 
             // Assert
-            Assert.Equal(new Person(), result);
+            Assert.Equal(people.ElementAt(index), result);
         }
 
         [Fact]
@@ -81,12 +102,14 @@ namespace API.Tests.Controllers
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
+            Person person = new Person { ID = 4, FirstName = "Ruslan", LastName = "Sok" };
 
             // Act
-            List<Person> result = controller.Post(new Person { ID = 4, FirstName="Ruslan", LastName="Sok" });
+            List<Person> result = controller.Post(person);
+            people.Add(person);
 
             // Assert
-            Assert.Equal(new List<Person>(), result);
+            Assert.Equal(people, result);
         }
 
 
@@ -95,12 +118,14 @@ namespace API.Tests.Controllers
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
+            int index = 1;
 
             // Act
-            List<Person> result = controller.Delete(5);
+            List<Person> result = controller.Delete(index);
+            people.RemoveAt(index);
 
             // Assert
-            Assert.Equal(new List<Person>(), result);
+            Assert.Equal(people, result);
         }
     }
 }

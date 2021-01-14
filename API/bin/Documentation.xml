@@ -497,10 +497,16 @@
             Information about people.
             </summary>
         </member>
-        <member name="F:API.Controllers.PeopleController._people">
+        <member name="M:API.Controllers.PeopleController.#ctor">
             <summary>
-            hard coded list of people
+            empty contrictor
             </summary>
+        </member>
+        <member name="M:API.Controllers.PeopleController.#ctor(System.Collections.Generic.List{API.Models.Person})">
+            <summary>
+            constructor to initialize people
+            </summary>
+            <param name="people"></param>
         </member>
         <member name="M:API.Controllers.PeopleController.FirstNames">
             <summary>
