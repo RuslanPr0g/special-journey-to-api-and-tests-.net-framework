@@ -15,7 +15,7 @@ namespace API.Tests.Controllers
     public class PeopleControllerTest
     {
         [TestMethod]
-        public void Get()
+        public void Get_ShouldReturnPeople()
         {
             // Arrange
             PeopleController controller = new PeopleController();
@@ -31,7 +31,7 @@ namespace API.Tests.Controllers
         }
 
         [TestMethod]
-        public void GetById()
+        public void GetById_ShouldReturnPerson()
         {
             // Arrange
             PeopleController controller = new PeopleController();
@@ -44,7 +44,7 @@ namespace API.Tests.Controllers
         }
 
         [TestMethod]
-        public void Post()
+        public void Post_ShouldReturnPeopleWithNewPerson()
         {
             // Arrange
             PeopleController controller = new PeopleController();
@@ -58,7 +58,7 @@ namespace API.Tests.Controllers
 
 
         [TestMethod]
-        public void Delete()
+        public void Delete_ShouldReturnPeopleWithoutDeletedPerson()
         {
             // Arrange
             PeopleController controller = new PeopleController();
