@@ -47,8 +47,13 @@ namespace API.Tests.Controllers
              },
         };
 
-        [Fact]
-        public void Get_ShouldReturnPeople()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        public void Get_ShouldReturnPeople(int checkAt)
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
@@ -59,14 +64,16 @@ namespace API.Tests.Controllers
             // Assert
             Assert.NotNull(result);
             Assert.Equal(people.Count(), result.Count());
-            Assert.Equal(people.ElementAt(0), result.ElementAt(0));
-            Assert.Equal(people.ElementAt(1), result.ElementAt(1));
-            Assert.Equal(people.ElementAt(2), result.ElementAt(2));
-            Assert.Equal(people.ElementAt(3), result.ElementAt(3));
+            Assert.Equal(people.ElementAt(checkAt), result.ElementAt(checkAt));
         }
 
-        [Fact]
-        public void Get_ShouldT()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        public void Get_ShouldThrowAnException(int checkAt)
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
@@ -77,18 +84,19 @@ namespace API.Tests.Controllers
             // Assert
             Assert.NotNull(result);
             Assert.Equal(people.Count(), result.Count());
-            Assert.Equal(people.ElementAt(0), result.ElementAt(0));
-            Assert.Equal(people.ElementAt(1), result.ElementAt(1));
-            Assert.Equal(people.ElementAt(2), result.ElementAt(2));
-            Assert.Equal(people.ElementAt(3), result.ElementAt(3));
+            Assert.Equal(people.ElementAt(checkAt), result.ElementAt(checkAt));
         }
 
-        [Fact]
-        public void GetById_ShouldReturnPerson()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        public void GetById_ShouldReturnPerson(int index)
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
-            int index = 2;
 
             // Act
             Person result = controller.Get(index);
@@ -113,12 +121,16 @@ namespace API.Tests.Controllers
         }
 
 
-        [Fact]
-        public void Delete_ShouldReturnPeopleWithoutDeletedPerson()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        public void Delete_ShouldReturnPeopleWithoutDeletedPerson(int index)
         {
             // Arrange
             PeopleController controller = new PeopleController(people);
-            int index = 1;
 
             // Act
             List<Person> result = controller.Delete(index);
